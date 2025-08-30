@@ -80,7 +80,6 @@ async function sendDiscordNotification(item) {
 
     try {
         await axios.post(DISCORD_WEBHOOK, message);
-        console.log(`Discord notification sent for ${item.full_item_name}`);
     } catch (err) {
         console.error('Failed to send Discord message:', err.message);
     }
@@ -120,7 +119,6 @@ async function checkPages() {
                 }
 
                 if (info) {
-                    console.log(`Item: ${info.full_item_name}, Float: ${info.floatvalue}`);
                     if (info.floatvalue <= page.maxFloat) {
                         try {
                             await sendDiscordNotification(info);
